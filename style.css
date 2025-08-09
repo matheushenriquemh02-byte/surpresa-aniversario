@@ -21,6 +21,8 @@ body {
     box-sizing: border-box;
     transition: opacity 1s ease-in-out;
     position: relative;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .hidden {
@@ -76,6 +78,7 @@ button:hover {
     border: 5px solid #d8a0c2;
     margin-bottom: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-height: 300px;
 }
 
 .background-hearts {
