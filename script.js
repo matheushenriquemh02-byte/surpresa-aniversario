@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const heart = document.createElement('div');
         heart.classList.add('heart');
         heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.top = Math.random() * -20 + 'vh'; // Corrigido para começar um pouco acima da tela
+        heart.style.top = Math.random() * 30 + 'vh'; // Inicia em algum lugar entre 0 e 30% da altura da tela
         heart.style.animationDelay = Math.random() * 8 + 's';
         heart.style.animationDuration = Math.random() * 6 + 8 + 's';
         heart.style.width = Math.random() * 10 + 10 + 'px';
