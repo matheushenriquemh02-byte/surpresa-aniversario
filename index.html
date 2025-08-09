@@ -5,56 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feliz Aniversário, Meu Amor!</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <div class="background-hearts"></div>
 
     <div class="container" id="home">
-        <h1 class="fade-in">Feliz Aniversário, Meu Amor!</h1>
-        <p class="fade-in delay-1">Bem-vinda à sua jornada. Use sua nova Bíblia para descobrir a próxima surpresa.</p>
-        <button onclick="startGame()" class="fade-in delay-2">Começar a Jornada</button>
+        <img src="images/foto1.jpg" alt="Nossa foto principal" class="main-photo fade-in">
+        <h1 class="fade-in delay-1">Feliz Aniversário, Meu Amor!</h1>
+        <p class="fade-in delay-2">Bem-vinda à sua jornada. Use sua nova Bíblia para descobrir a próxima surpresa.</p>
+        <button onclick="startGame(this)" class="fade-in delay-3">Começar a Jornada</button>
     </div>
 
     <div class="container hidden" id="game-question-1">
-        <h2>Pergunta 1</h2>
-        <p>Qual livro da Bíblia fala que o amor "tudo sofre, tudo crê, tudo espera, tudo suporta"?</p>
-        <div class="options">
-            <button onclick="checkAnswer(1, 'incorrect')">Efésios</button>
-            <button onclick="checkAnswer(1, 'correct')">1 Coríntios</button>
-            <button onclick="checkAnswer(1, 'incorrect')">Romanos</button>
+        <img src="images/foto2.jpg" alt="Foto para a pergunta 1" class="question-photo fade-in">
+        <h2 class="fade-in delay-1">Pergunta 1</h2>
+        <p class="fade-in delay-2">Qual livro da Bíblia fala que o amor "tudo sofre, tudo crê, tudo espera, tudo suporta"?</p>
+        <div class="options fade-in delay-3">
+            <button onclick="checkAnswer(1, 'incorrect', this)">Efésios</button>
+            <button onclick="checkAnswer(1, 'correct', this)">1 Coríntios</button>
+            <button onclick="checkAnswer(1, 'incorrect', this)">Romanos</button>
         </div>
     </div>
 
     <div class="container hidden" id="game-question-2">
-        <h2>Pergunta 2</h2>
-        <p>Em qual versículo Jesus diz: "Eu sou o caminho, e a verdade, e a vida"?</p>
-        <div class="options">
-            <button onclick="checkAnswer(2, 'incorrect')">João 10:10</button>
-            <button onclick="checkAnswer(2, 'incorrect')">Mateus 6:33</button>
-            <button onclick="checkAnswer(2, 'correct')">João 14:6</button>
+        <img src="images/foto3.jpg" alt="Foto para a pergunta 2" class="question-photo fade-in">
+        <h2 class="fade-in delay-1">Pergunta 2</h2>
+        <p class="fade-in delay-2">Em qual versículo Jesus diz: "Eu sou o caminho, e a verdade, e a vida"?</p>
+        <div class="options fade-in delay-3">
+            <button onclick="checkAnswer(2, 'incorrect', this)">João 10:10</button>
+            <button onclick="checkAnswer(2, 'incorrect', this)">Mateus 6:33</button>
+            <button onclick="checkAnswer(2, 'correct', this)">João 14:6</button>
         </div>
     </div>
     
     <div class="container hidden" id="game-question-3">
-        <h2>Pergunta 3</h2>
-        <p>Qual versículo nos lembra de sermos gratos uns pelos outros?</p>
-        <div class="options">
-            <button onclick="checkAnswer(3, 'correct')">1 Tessalonicenses 5:18</button>
-            <button onclick="checkAnswer(3, 'incorrect')">Salmos 23:1</button>
-            <button onclick="checkAnswer(3, 'incorrect')">Filipenses 4:13</button>
+        <img src="images/foto3.jpg" alt="Foto para a pergunta 3" class="question-photo fade-in">
+        <h2 class="fade-in delay-1">Pergunta 3</h2>
+        <p class="fade-in delay-2">Qual versículo nos lembra de sermos gratos uns pelos outros?</p>
+        <div class="options fade-in delay-3">
+            <button onclick="checkAnswer(3, 'correct', this)">1 Tessalonicenses 5:18</button>
+            <button onclick="checkAnswer(3, 'incorrect', this)">Salmos 23:1</button>
+            <button onclick="checkAnswer(3, 'incorrect', this)">Filipenses 4:13</button>
         </div>
     </div>
 
-    <div class="container hidden" id="final-surprise">
-        <h2 class="fade-in">Parabéns, meu amor!</h2>
-        <p class="fade-in delay-1">Você completou a sua jornada. Seu amor é um presente para mim, e agora que você tem sua nova Bíblia, vamos celebrar juntos.</p>
-        <h3 class="fade-in delay-2">Qual presente você prefere para celebrarmos?</h3>
-        <div class="options fade-in delay-3">
-            <button onclick="selectOption('praia')">Ir à praia pela manhã</button>
-            <button onclick="selectOption('restaurante')">Ir ao Oliva Gourmet para jantar</button>
+    <div class="container hidden" id="choice-page">
+        <h2 class="fade-in">Agora, uma escolha nossa.</h2>
+        <p class="fade-in delay-1">Qual aventura você gostaria para a nossa celebração?</p>
+        <div class="options fade-in delay-2">
+            <button onclick="revealSurprise('restaurant', this)">Jantar no Restaurante</button>
+            <button onclick="revealSurprise('beach', this)">Passeio na Praia</button>
         </div>
-        <p id="choice-message" class="fade-in delay-4 hidden"></p>
+    </div>
+
+    <div class="container hidden" id="final-restaurant">
+        <h2 class="fade-in">Excelente escolha!</h2>
+        <p class="fade-in delay-1">Você completou a sua jornada. Seu amor é um presente para mim, e agora que você tem sua nova Bíblia, vamos celebrar juntos.</p>
+        <h3 class="fade-in delay-2">O seu próximo destino é o **Oliva Gourmet** para um jantar especial, às 20h, à espera de você!</h3>
+        <p class="fade-in delay-3">Lembre-se: Olhe na página **20** da sua nova Bíblia, no versículo **2** para a sua última pista.</p>
+    </div>
+
+    <div class="container hidden" id="final-beach">
+        <h2 class="fade-in">Que ótima escolha!</h2>
+        <p class="fade-in delay-1">Você completou a sua jornada. Seu amor é um presente para mim, e agora que você tem sua nova Bíblia, vamos celebrar juntos.</p>
+        <h3 class="fade-in delay-2">O seu próximo destino é a **Praia do Forte** para um passeio romântico no final da tarde, a partir das 17h!</h3>
+        <p class="fade-in delay-3">Lembre-se: Olhe na página **20** da sua nova Bíblia, no versículo **2** para a sua última pista.</p>
     </div>
 
     <script src="script.js"></script>

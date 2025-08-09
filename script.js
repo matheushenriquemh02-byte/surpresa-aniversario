@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const heartContainer = document.querySelector('.background-hearts');
 
-    function createHeart() {
+    function createFloatingHeart() {
         const heart = document.createElement('div');
         heart.classList.add('heart');
         heart.style.left = Math.random() * 100 + 'vw';
@@ -16,48 +16,66 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 10000);
     }
 
-    setInterval(createHeart, 500);
+    setInterval(createFloatingHeart, 500);
 });
 
 let currentPage = 1;
 
-function startGame() {
-    document.getElementById('home').style.display = 'none';
-    document.getElementById('home').style.opacity = '0';
-    document.getElementById('game-question-1').style.display = 'flex';
-    document.getElementById('game-question-1').style.opacity = '1';
+function createRisingHeart(button) {
+    const risingHeart = document.createElement('div');
+    risingHeart.classList.add('rising-heart');
+    button.appendChild(risingHeart);
+
+    const buttonRect = button.getBoundingClientRect();
+    risingHeart.style.left = `${buttonRect.width / 2}px`;
+    risingHeart.style.top = `${buttonRect.height / 2}px`;
+
+    setTimeout(() => {
+        risingHeart.remove();
+    }, 2000);
 }
 
-function checkAnswer(questionNum, answerType) {
+function startGame(button) {
+    createRisingHeart(button);
+    
+    document.getElementById('home').classList.add('hidden');
+    
+    setTimeout(() => {
+        document.getElementById('game-question-1').classList.remove('hidden');
+    }, 1000);
+}
+
+function checkAnswer(questionNum, answerType, button) {
+    createRisingHeart(button);
+
     if (answerType === 'correct') {
         const currentQuestion = document.getElementById(`game-question-${questionNum}`);
-        currentQuestion.style.display = 'none';
-        currentQuestion.style.opacity = '0';
-
-        if (questionNum < 3) {
-            const nextQuestion = document.getElementById(`game-question-${questionNum + 1}`);
-            nextQuestion.style.display = 'flex';
-            nextQuestion.style.opacity = '1';
-        } else {
-            const finalPage = document.getElementById('final-surprise');
-            finalPage.style.display = 'flex';
-            finalPage.style.opacity = '1';
-        }
+        currentQuestion.classList.add('hidden');
+        
+        setTimeout(() => {
+            if (questionNum < 3) {
+                const nextQuestion = document.getElementById(`game-question-${questionNum + 1}`);
+                nextQuestion.classList.remove('hidden');
+            } else {
+                const choicePage = document.getElementById('choice-page');
+                choicePage.classList.remove('hidden');
+            }
+        }, 1000);
     } else {
         alert('Resposta incorreta! Tente novamente.');
     }
 }
 
-function selectOption(option) {
-    const optionsContainer = document.querySelector('#final-surprise .options');
-    const messageContainer = document.getElementById('choice-message');
-    optionsContainer.style.display = 'none';
+function revealSurprise(choice, button) {
+    createRisingHeart(button);
 
-    if (option === 'praia') {
-        messageContainer.innerHTML = 'É uma ótima escolha, meu amor! Prepare a roupa de banho, pois o nosso destino é a praia amanhã cedo!';
-    } else if (option === 'restaurante') {
-        messageContainer.innerHTML = 'É uma ótima escolha, meu amor! Prepare-se para uma noite especial no Oliva Gourmet! Nosso jantar será às 20h.';
-    }
+    document.getElementById('choice-page').classList.add('hidden');
 
-    messageContainer.classList.remove('hidden');
+    setTimeout(() => {
+        if (choice === 'restaurant') {
+            document.getElementById('final-restaurant').classList.remove('hidden');
+        } else if (choice === 'beach') {
+            document.getElementById('final-beach').classList.remove('hidden');
+        }
+    }, 1000);
 }
