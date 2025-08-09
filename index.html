@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Aniversário, Meu Amor!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="background-hearts"></div>
+
+    <div class="container" id="home">
+        <h1 class="fade-in">Feliz Aniversário, Meu Amor!</h1>
+        <p class="fade-in delay-1">Bem-vinda à sua jornada. Use sua nova Bíblia para descobrir a próxima surpresa.</p>
+        <button onclick="startGame()" class="fade-in delay-2">Começar a Jornada</button>
+    </div>
+
+    <div class="container hidden" id="game-question-1">
+        <h2>Pergunta 1</h2>
+        <p>Qual livro da Bíblia fala que o amor "tudo sofre, tudo crê, tudo espera, tudo suporta"?</p>
+        <div class="options">
+            <button onclick="checkAnswer(1, 'incorrect')">Efésios</button>
+            <button onclick="checkAnswer(1, 'correct')">1 Coríntios</button>
+            <button onclick="checkAnswer(1, 'incorrect')">Romanos</button>
+        </div>
+    </div>
+
+    <div class="container hidden" id="game-question-2">
+        <h2>Pergunta 2</h2>
+        <p>Em qual versículo Jesus diz: "Eu sou o caminho, e a verdade, e a vida"?</p>
+        <div class="options">
+            <button onclick="checkAnswer(2, 'incorrect')">João 10:10</button>
+            <button onclick="checkAnswer(2, 'incorrect')">Mateus 6:33</button>
+            <button onclick="checkAnswer(2, 'correct')">João 14:6</button>
+        </div>
+    </div>
+    
+    <div class="container hidden" id="game-question-3">
+        <h2>Pergunta 3</h2>
+        <p>Qual versículo nos lembra de sermos gratos uns pelos outros?</p>
+        <div class="options">
+            <button onclick="checkAnswer(3, 'correct')">1 Tessalonicenses 5:18</button>
+            <button onclick="checkAnswer(3, 'incorrect')">Salmos 23:1</button>
+            <button onclick="checkAnswer(3, 'incorrect')">Filipenses 4:13</button>
+        </div>
+    </div>
+
+    <div class="container hidden" id="final-surprise">
+        <h2 class="fade-in">Parabéns, meu amor!</h2>
+        <p class="fade-in delay-1">Você completou a sua jornada. Seu amor é um presente para mim, e agora que você tem sua nova Bíblia, vamos celebrar juntos.</p>
+        <h3 class="fade-in delay-2">Qual presente você prefere para celebrarmos?</h3>
+        <div class="options fade-in delay-3">
+            <button onclick="selectOption('praia')">Ir à praia pela manhã</button>
+            <button onclick="selectOption('restaurante')">Ir ao Oliva Gourmet para jantar</button>
+        </div>
+        <p id="choice-message" class="fade-in delay-4 hidden"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
