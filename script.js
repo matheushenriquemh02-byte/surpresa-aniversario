@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Lógica para os corações de fundo que flutuam
     const heartContainer = document.querySelector('.background-hearts');
-
     function createFloatingHeart() {
         const heart = document.createElement('div');
         heart.classList.add('heart');
@@ -15,11 +15,23 @@ document.addEventListener('DOMContentLoaded', () => {
             heart.remove();
         }, 10000);
     }
-
     setInterval(createFloatingHeart, 500);
-});
 
-let currentPage = 1;
+    // Lógica para os corações que caem
+    function createFallingHeart() {
+        const fallingHeart = document.createElement('div');
+        fallingHeart.classList.add('falling-heart');
+        fallingHeart.style.left = Math.random() * 100 + 'vw';
+        fallingHeart.style.animationDuration = Math.random() * 8 + 5 + 's';
+        fallingHeart.style.animationDelay = Math.random() * 5 + 's';
+        document.body.appendChild(fallingHeart);
+
+        setTimeout(() => {
+            fallingHeart.remove();
+        }, 13000);
+    }
+    setInterval(createFallingHeart, 1000);
+});
 
 function createRisingHeart(button) {
     const risingHeart = document.createElement('div');
@@ -37,9 +49,9 @@ function createRisingHeart(button) {
 
 function startGame(button) {
     createRisingHeart(button);
-    
+
     document.getElementById('home').classList.add('hidden');
-    
+
     setTimeout(() => {
         document.getElementById('game-question-1').classList.remove('hidden');
     }, 1000);
@@ -51,7 +63,7 @@ function checkAnswer(questionNum, answerType, button) {
     if (answerType === 'correct') {
         const currentQuestion = document.getElementById(`game-question-${questionNum}`);
         currentQuestion.classList.add('hidden');
-        
+
         setTimeout(() => {
             if (questionNum < 3) {
                 const nextQuestion = document.getElementById(`game-question-${questionNum + 1}`);

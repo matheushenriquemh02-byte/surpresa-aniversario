@@ -81,7 +81,8 @@ button:hover {
     max-height: 300px;
 }
 
-.background-hearts {
+/* Estilo do container de corações */
+.background-hearts, .click-hearts {
     position: fixed;
     top: 0;
     left: 0;
@@ -90,7 +91,11 @@ button:hover {
     pointer-events: none;
     z-index: -1;
 }
+.click-hearts {
+  z-index: 5;
+}
 
+/* Estilo do coração flutuante (para o background) */
 .heart {
     position: absolute;
     background-color: #e0b0d3;
@@ -125,6 +130,7 @@ button:hover {
     100% { transform: translateY(0) rotate(45deg); opacity: 0.8; }
 }
 
+/* Animação para os corações que sobem ao clicar nos botões */
 .rising-heart {
     position: absolute;
     bottom: 0;
@@ -163,6 +169,42 @@ button:hover {
     100% { transform: scale(1.5) translateY(-200px) translateX(-50%) rotate(0deg); opacity: 0; }
 }
 
+/* Nova animação para os corações que caem */
+.falling-heart {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: #ff69b4;
+    transform: rotate(45deg);
+    animation: fall 10s linear infinite;
+}
+
+.falling-heart::before,
+.falling-heart::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #ff69b4;
+    border-radius: 50%;
+}
+
+.falling-heart::before {
+    top: -50%;
+    left: 0;
+}
+
+.falling-heart::after {
+    top: 0;
+    left: 50%;
+}
+
+@keyframes fall {
+    0% { transform: translateY(-100px) rotate(45deg); opacity: 1; }
+    100% { transform: translateY(110vh) rotate(45deg); opacity: 0; }
+}
+
+/* Animações de entrada para o conteúdo */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
