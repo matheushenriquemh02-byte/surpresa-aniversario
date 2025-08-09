@@ -5,32 +5,33 @@ document.addEventListener('DOMContentLoaded', () => {
         const heart = document.createElement('div');
         heart.classList.add('heart');
         heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.animationDuration = Math.random() * 5 + 5 + 's';
-        heart.style.animationDelay = Math.random() * 5 + 's';
-        heart.style.width = Math.random() * 20 + 10 + 'px';
+        heart.style.top = Math.random() * -20 + 'vh'; // Corrigido para começar um pouco acima da tela
+        heart.style.animationDelay = Math.random() * 8 + 's';
+        heart.style.animationDuration = Math.random() * 6 + 8 + 's';
+        heart.style.width = Math.random() * 10 + 10 + 'px';
         heart.style.height = heart.style.width;
         heartContainer.appendChild(heart);
 
         setTimeout(() => {
             heart.remove();
-        }, 10000);
+        }, 15000);
     }
-    setInterval(createFloatingHeart, 500);
+    setInterval(createFloatingHeart, 700);
 
     // Lógica para os corações que caem
     function createFallingHeart() {
         const fallingHeart = document.createElement('div');
         fallingHeart.classList.add('falling-heart');
         fallingHeart.style.left = Math.random() * 100 + 'vw';
-        fallingHeart.style.animationDuration = Math.random() * 8 + 5 + 's';
-        fallingHeart.style.animationDelay = Math.random() * 5 + 's';
+        fallingHeart.style.animationDuration = Math.random() * 8 + 10 + 's';
+        fallingHeart.style.animationDelay = Math.random() * 10 + 's';
         document.body.appendChild(fallingHeart);
 
         setTimeout(() => {
             fallingHeart.remove();
-        }, 13000);
+        }, 20000);
     }
-    setInterval(createFallingHeart, 1000);
+    setInterval(createFallingHeart, 1200);
 });
 
 function createRisingHeart(button) {
@@ -49,9 +50,9 @@ function createRisingHeart(button) {
 
 function startGame(button) {
     createRisingHeart(button);
-
+    
     document.getElementById('home').classList.add('hidden');
-
+    
     setTimeout(() => {
         document.getElementById('game-question-1').classList.remove('hidden');
     }, 1000);
@@ -63,7 +64,7 @@ function checkAnswer(questionNum, answerType, button) {
     if (answerType === 'correct') {
         const currentQuestion = document.getElementById(`game-question-${questionNum}`);
         currentQuestion.classList.add('hidden');
-
+        
         setTimeout(() => {
             if (questionNum < 3) {
                 const nextQuestion = document.getElementById(`game-question-${questionNum + 1}`);
