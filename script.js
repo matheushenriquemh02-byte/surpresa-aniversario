@@ -75,7 +75,7 @@ function checkAnswer(questionNum, answerType, button) {
             }
         }, 1000);
     } else {
-        alert('Resposta incorreta! Tente novamente.');
+        alert('Resposta incorreta, meu bebê! Tente novamente.');
     }
 }
 
